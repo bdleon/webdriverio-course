@@ -25,10 +25,10 @@ class Internet {
     }
 
     async clickOnLink() {
-       if( await this.firstLink.isDisplayed()=== true){
+       if( await this.firstLink.isDisplayed() === true){
            await this.firstLink.click()
-       }
-       browser.pause(50000)
+        }
+        await browser.pause(5000)
 
     }
 

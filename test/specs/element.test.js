@@ -32,6 +32,7 @@ describe("Interacting with elements", function () {
 
     it('click first Link', async()=>{
         console.log(await internetPage.clickOnLink())
+        
     })
 
 })
