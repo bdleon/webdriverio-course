@@ -9,7 +9,7 @@ class Internet {
     get childElements() { return this.parent.$$('li') }
 
     specificChildElement(index) { return this.parent.$(`li:nth-child(${index})`) }
-    get firstLink() { return $('ul li:nth-child(1) a')}
+    get firstLink() { return $('ul li:nth-child(1) a') }
 
     async getLiText() {
         await this.childElements.filter((e) => {
@@ -20,13 +20,14 @@ class Internet {
     }
 
     async getSpecificElementText(index) {
-        console.log(await this.specificChildElement(index).getText())
+        await this.specificChildElement(index).waitForDisplayed()
+        return await this.specificChildElement(index).getText()
 
     }
 
     async clickOnLink() {
-       if( await this.firstLink.isDisplayed() === true){
-           await this.firstLink.click()
+        if (await this.firstLink.isDisplayed() === true) {
+            await this.firstLink.click()
         }
         await browser.pause(5000)
 
