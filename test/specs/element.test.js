@@ -30,7 +30,7 @@ describe("Interacting with elements", function () {
         console.log(await internetPage.subHeading.isEnabled());
     })
 
-    it('Is first link clickable', async()=>{
+    it('click first Link', async()=>{
         console.log(await internetPage.clickOnLink())
     })
 
