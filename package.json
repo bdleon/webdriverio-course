@@ -1,0 +1,24 @@
+{
+  "name": "webdriver-io-course",
+  "version": "1.0.0",
+  "description": "This a tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/wdio ./wdio.conf.js"
+  },
+  "author": "Brandon De Leon",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/local-runner": "^7.19.7",
+    "@wdio/mocha-framework": "^7.19.7",
+    "@wdio/selenium-standalone-service": "^7.19.5",
+    "@wdio/spec-reporter": "^7.19.7",
+    "chai": "^4.3.6",
+    "chai-webdriverio": "^1.0.0",
+    "wdio-wait-for": "^2.2.6",
+    "webdriverio": "^7.19.7"
+  },
+  "dependencies": {
+    "@wdio/cli": "^7.19.7"
+  }
+}
