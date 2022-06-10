@@ -1,6 +1,7 @@
 
 
 
+const { assert } = require("chai");
 const internetPage = require("../pageobjects/internet.page");
 
 describe("Test element actions", function () {
@@ -27,5 +28,11 @@ describe("Test element actions", function () {
         
         await internetPage.clickCheckBox(1);
         expect(await internetPage.checkBoxes(1).isSelected()).equals(false);
+    })
+
+    it('should enter username', async ()=>{
+        await browser.url('/login');
+        await internetPage.enterUsername('tomsmith');
+        assert.equal('tomsmith', await internetPage.username.getValue(),"Did not match username in input field");
     })
 })
