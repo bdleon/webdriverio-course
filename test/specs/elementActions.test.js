@@ -41,4 +41,10 @@ describe("Test element actions", function () {
         await internetPage.enterPassword('SuperSecretPassword!');
         assert.equal('SuperSecretPassword!', await internetPage.password.getValue(), "Did not match password in input field");
     })
+
+    it('Should clear value', async () => {
+        await internetPage.username.click()
+        await internetPage.username.clearValue()
+        assert.equal('', await internetPage.username.getValue(),"The username input did not clear")
+    })
 })

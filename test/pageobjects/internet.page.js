@@ -2,21 +2,44 @@
 
 
 
+
 class Internet {
 
     get pageHeader() { return $('h1.heading') }
     get subHeading() { return $('h2') }
-    get h3Header() { return $('h3')}
+    get h3Header() { return $('h3') }
     get pageFooter() { return $('#page-footer') }
     get parent() { return $('ul') }
     get childElements() { return this.parent.$$('li') }
     specificChildElement(index) { return this.parent.$(`li:nth-child(${index})`) }
     get firstLink() { return $('ul li:nth-child(1) a') }
-    link(index) { return $(`ul li:nth-child(${index}) a`)}
-
+    link(index) { return $(`ul li:nth-child(${index}) a`) }
     checkBoxes(index) { return $(`#checkboxes input:nth-child(${index})`) }
     get username() { return $('#username') }
-    get password() {return $('#password') }
+    get password() { return $('#password') }
+    figure(index) { return $(`.example .figure:nth-child(${index}) img`) }
+    figureDetail(index) { return $(`.example .figure:nth-child(${index}) .figcaption h5`) }
+
+    /**
+     * Hover of the figure
+     * @param {Number} index The specified index of the image
+     */
+    async hoverOverFigure(index) {
+        await this.figure(index).waitForDisplayed()
+        await this.figure(index).moveTo(1, 1);
+
+    }
+
+    /**
+     * This method will return the text of the figure details
+     * @param {Number} index The specified index of the figcaption detail
+     */
+    async getFigureDetailsText(index) {
+        await this.figureDetail(index).waitForDisplayed()
+        return await this.figureDetail(index).getText()
+
+    }
+
     /**
      * inputs username to the field 
      * @param {string} text username to be entered
@@ -25,6 +48,7 @@ class Internet {
         await this.username.waitForDisplayed()
         await this.username.setValue(text)
     }
+
     /**
      * Inputs password to the input field
      * @param {string} text password to be entered
@@ -38,11 +62,11 @@ class Internet {
      * Clicks on the link based on the index provided
      * @param {Number} index the index of the element
      */
-    async clickLink(index){
+    async clickLink(index) {
         await this.link(index).waitForDisplayed()
         await this.link(index).click()
     }
-    
+
     async clickCheckBox(index) {
         await this.checkBoxes(index).waitForDisplayed()
         await this.checkBoxes(index).click()
