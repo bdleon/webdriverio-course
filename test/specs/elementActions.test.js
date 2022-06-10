@@ -25,14 +25,20 @@ describe("Test element actions", function () {
     })
 
     it('should unclick checkbox', async () => {
-        
+
         await internetPage.clickCheckBox(1);
         expect(await internetPage.checkBoxes(1).isSelected()).equals(false);
     })
 
-    it('should enter username', async ()=>{
+    it('should enter username', async () => {
         await browser.url('/login');
         await internetPage.enterUsername('tomsmith');
-        assert.equal('tomsmith', await internetPage.username.getValue(),"Did not match username in input field");
+        assert.equal('tomsmith', await internetPage.username.getValue(), "Did not match username in input field");
+    })
+
+    it('should enter password', async () => {
+        await browser.url('/login');
+        await internetPage.enterPassword('SuperSecretPassword!');
+        assert.equal('SuperSecretPassword!', await internetPage.password.getValue(), "Did not match password in input field");
     })
 })
