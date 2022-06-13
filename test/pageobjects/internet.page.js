@@ -1,9 +1,5 @@
 
 
-
-
-
-
 class Internet {
 
     get pageHeader() { return $('h1.heading') }
@@ -22,6 +18,37 @@ class Internet {
     figureDetail(index) { return $(`.example .figure:nth-child(${index}) .figcaption h5`) }
     get target() { return $('.example #target') }
     get result() { return $('#result') }
+
+    get hereLink() { return $('.example a')}
+
+    get iframeBody() { return $('#tinymce')}
+    get iframe() { return $('.tox-edit-area #mce_0_ifr')}
+/**
+ * Enter the text in the iframe
+ * @param {String} text text to be entered
+ */
+    async sendTextToBody(text){
+       await this.iframeBody.waitForDisplayed();
+       await this.iframeBody.clearValue();
+       await this.iframeBody.click();
+       await this.iframeBody.keys(text);
+    }
+
+/**
+ * Click the "click here" link
+ */
+    async clickHereLink(){
+        await this.hereLink.waitForDisplayed();
+        await this.hereLink.click();
+
+    }
+
+    /**
+     * Scrolls to page footer
+     */
+    async scrollToPageFooter(){
+        await this.pageFooter.moveTo()
+    }
     /**
      * Clicks the target input field
      */
