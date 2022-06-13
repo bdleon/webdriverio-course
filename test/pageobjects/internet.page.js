@@ -1,3 +1,5 @@
+const { default: $ } = require("webdriverio/build/commands/browser/$")
+
 class Internet {
 
     get pageHeader() { return $('h1.heading') }
@@ -26,6 +28,19 @@ class Internet {
     get columnB() { return $('#column-b')};
     get columnAHeader() { return $('#column-a header')}
     get columnBHeader() { return $('#column-b header')}
+    get dropdownMenu() { return $('#dropdown')}
+    get dropdownMenuOpton1 (){ return $('#dropdown option:nth-child(2)')}
+    get dropdownMenuOpton2 (){ return $('#dropdown option:nth-child(3)')}
+
+    async clickDropDownMenu (){
+        await this.dropdownMenu.waitForDisplayed()
+        await this.dropdownMenu.click()
+    }
+
+    async clickDropdownMenuOpton1 (){
+        await this.dropdownMenuOpton1.waitForDisplayed()
+        await this.dropdownMenuOpton1.click()
+    }
 
     async dragColumnAToColumnB(){
         await this.columnA.waitForDisplayed()
