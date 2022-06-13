@@ -1,6 +1,3 @@
-const { default: $ } = require("webdriverio/build/commands/browser/$")
-
-
 class Internet {
 
     get pageHeader() { return $('h1.heading') }
@@ -32,7 +29,7 @@ class Internet {
 
     async dragColumnAToColumnB(){
         await this.columnA.waitForDisplayed()
-        await this.columnA.dragAndDrop(this.columnB)
+        await this.columnA.dragAndDrop(await this.columnB)
     }
 /**
  * Enter the text in the iframe
