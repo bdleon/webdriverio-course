@@ -1,4 +1,3 @@
-const { default: $ } = require("webdriverio/build/commands/browser/$")
 
 class Internet {
 
@@ -40,6 +39,10 @@ class Internet {
     async clickDropdownMenuOpton1 (){
         await this.dropdownMenuOpton1.waitForDisplayed()
         await this.dropdownMenuOpton1.click()
+    }
+    async clickDropdownMenuOpton2 (){
+        await this.dropdownMenuOpton2.waitForDisplayed()
+        await this.dropdownMenuOpton2.click()
     }
 
     async dragColumnAToColumnB(){
