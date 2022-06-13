@@ -1,3 +1,4 @@
+const { default: $ } = require("webdriverio/build/commands/browser/$")
 
 
 class Internet {
@@ -23,6 +24,14 @@ class Internet {
 
     get iframeBody() { return $('#tinymce')}
     get iframe() { return $('.tox-edit-area #mce_0_ifr')}
+
+    get columnA() { return $('#column-a')};
+    get columnB() { return $('#column-b')};
+
+    async dragColumnAToColumnB(){
+        await this.columnA.waitForDisplayed()
+        await this.columnA.dragAndDrop(this.columnB)
+    }
 /**
  * Enter the text in the iframe
  * @param {String} text text to be entered
