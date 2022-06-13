@@ -3,6 +3,7 @@
 
 
 
+
 class Internet {
 
     get pageHeader() { return $('h1.heading') }
@@ -19,6 +20,32 @@ class Internet {
     get password() { return $('#password') }
     figure(index) { return $(`.example .figure:nth-child(${index}) img`) }
     figureDetail(index) { return $(`.example .figure:nth-child(${index}) .figcaption h5`) }
+    get target() { return $('.example #target') }
+    get result() { return $('#result') }
+    /**
+     * Clicks the target input field
+     */
+    async clickTarget() {
+        await this.target.waitForDisplayed()
+        await this.target.click()
+    }
+    /**
+     * 
+     * send keys to target
+     */
+    async sendKeysToTarget(text) {
+        await this.target.waitForDisplayed()
+        await this.target.keys(text)
+
+    }
+/**
+ * 
+ * @returns The text of the return element 
+ */
+    async getResutsText() {
+        await this.result.waitForDisplayed()
+        return this.result.getText()
+    }
 
     /**
      * Hover of the figure
