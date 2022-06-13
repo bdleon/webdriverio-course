@@ -1,5 +1,3 @@
-const { default: $ } = require("webdriverio/build/commands/browser/$")
-
 class Internet {
 
     get pageHeader() { return $('h1.heading') }
@@ -31,12 +29,12 @@ class Internet {
     get dropdownMenu() { return $('#dropdown') }
     get dropdownMenuOpton1() { return $('#dropdown option:nth-child(2)') }
     get dropdownMenuOpton2() { return $('#dropdown option:nth-child(3)') }
-    javascriptAlertButton(index) { return $(`.example li:nth-child(${index})`) }
+    javascriptAlertButton(index) { return $(`.example li:nth-child(${index}) button`) }
 /**
  * Click the specified javascript alert button
  * @param {Number} index the index of the element
  */
-    clickJavascriptAlertButton(index){
+    async clickJavascriptAlertButton(index){
         await this.javascriptAlertButton(index).waitForDisplayed();
         await this.javascriptAlertButton(index).click();
     }
