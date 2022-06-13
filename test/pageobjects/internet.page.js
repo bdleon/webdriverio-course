@@ -27,6 +27,8 @@ class Internet {
 
     get columnA() { return $('#column-a')};
     get columnB() { return $('#column-b')};
+    get columnAHeader() { return $('#column-a header')}
+    get columnBHeader() { return $('#column-b header')}
 
     async dragColumnAToColumnB(){
         await this.columnA.waitForDisplayed()
