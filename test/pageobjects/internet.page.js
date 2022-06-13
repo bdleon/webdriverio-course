@@ -32,34 +32,43 @@ class Internet {
     get dropdownMenuOpton1() { return $('#dropdown option:nth-child(2)') }
     get dropdownMenuOpton2() { return $('#dropdown option:nth-child(3)') }
     javascriptAlertButton(index) { return $(`.example li:nth-child(${index})`) }
+/**
+ * Click the specified javascript alert button
+ * @param {Number} index the index of the element
+ */
+    clickJavascriptAlertButton(index){
+        await this.javascriptAlertButton(index).waitForDisplayed();
+        await this.javascriptAlertButton(index).click();
+    }
+
     /**
      * clicks on dropdown menu
      */
     async clickDropDownMenu() {
-        await this.dropdownMenu.waitForDisplayed()
-        await this.dropdownMenu.click()
+        await this.dropdownMenu.waitForDisplayed();
+        await this.dropdownMenu.click();
     }
     /**
      * Click on first option in dropdown
      */
     async clickDropdownMenuOpton1() {
-        await this.dropdownMenuOpton1.waitForDisplayed()
-        await this.dropdownMenuOpton1.click()
+        await this.dropdownMenuOpton1.waitForDisplayed();
+        await this.dropdownMenuOpton1.click();
     }
     /**
      * Clicks on second option in dropdown
      */
     async clickDropdownMenuOpton2() {
-        await this.dropdownMenuOpton2.waitForDisplayed()
-        await this.dropdownMenuOpton2.click()
+        await this.dropdownMenuOpton2.waitForDisplayed();
+        await this.dropdownMenuOpton2.click();
     }
     /**
      * Drags column b to column a
      */
 
     async dragColumnAToColumnB() {
-        await this.columnA.waitForDisplayed()
-        await this.columnA.dragAndDrop(await this.columnB)
+        await this.columnA.waitForDisplayed();
+        await this.columnA.dragAndDrop(await this.columnB);
     }
     /**
      * Enter the text in the iframe
