@@ -1,3 +1,4 @@
+const { default: $ } = require("webdriverio/build/commands/browser/$")
 
 class Internet {
 
@@ -18,52 +19,63 @@ class Internet {
     get target() { return $('.example #target') }
     get result() { return $('#result') }
 
-    get hereLink() { return $('.example a')}
+    get hereLink() { return $('.example a') }
 
-    get iframeBody() { return $('#tinymce')}
-    get iframe() { return $('.tox-edit-area #mce_0_ifr')}
+    get iframeBody() { return $('#tinymce') }
+    get iframe() { return $('.tox-edit-area #mce_0_ifr') }
 
-    get columnA() { return $('#column-a')};
-    get columnB() { return $('#column-b')};
-    get columnAHeader() { return $('#column-a header')}
-    get columnBHeader() { return $('#column-b header')}
-    get dropdownMenu() { return $('#dropdown')}
-    get dropdownMenuOpton1 (){ return $('#dropdown option:nth-child(2)')}
-    get dropdownMenuOpton2 (){ return $('#dropdown option:nth-child(3)')}
-
-    async clickDropDownMenu (){
+    get columnA() { return $('#column-a') };
+    get columnB() { return $('#column-b') };
+    get columnAHeader() { return $('#column-a header') }
+    get columnBHeader() { return $('#column-b header') }
+    get dropdownMenu() { return $('#dropdown') }
+    get dropdownMenuOpton1() { return $('#dropdown option:nth-child(2)') }
+    get dropdownMenuOpton2() { return $('#dropdown option:nth-child(3)') }
+    javascriptAlertButton(index) { return $(`.example li:nth-child(${index})`) }
+    /**
+     * clicks on dropdown menu
+     */
+    async clickDropDownMenu() {
         await this.dropdownMenu.waitForDisplayed()
         await this.dropdownMenu.click()
     }
-
-    async clickDropdownMenuOpton1 (){
+    /**
+     * Click on first option in dropdown
+     */
+    async clickDropdownMenuOpton1() {
         await this.dropdownMenuOpton1.waitForDisplayed()
         await this.dropdownMenuOpton1.click()
     }
-    async clickDropdownMenuOpton2 (){
+    /**
+     * Clicks on second option in dropdown
+     */
+    async clickDropdownMenuOpton2() {
         await this.dropdownMenuOpton2.waitForDisplayed()
         await this.dropdownMenuOpton2.click()
     }
+    /**
+     * Drags column b to column a
+     */
 
-    async dragColumnAToColumnB(){
+    async dragColumnAToColumnB() {
         await this.columnA.waitForDisplayed()
         await this.columnA.dragAndDrop(await this.columnB)
     }
-/**
- * Enter the text in the iframe
- * @param {String} text text to be entered
- */
-    async sendTextToBody(text){
-       await this.iframeBody.waitForDisplayed();
-       await this.iframeBody.clearValue();
-       await this.iframeBody.click();
-       await this.iframeBody.keys(text);
+    /**
+     * Enter the text in the iframe
+     * @param {String} text text to be entered
+     */
+    async sendTextToBody(text) {
+        await this.iframeBody.waitForDisplayed();
+        await this.iframeBody.clearValue();
+        await this.iframeBody.click();
+        await this.iframeBody.keys(text);
     }
 
-/**
- * Click the "click here" link
- */
-    async clickHereLink(){
+    /**
+     * Click the "click here" link
+     */
+    async clickHereLink() {
         await this.hereLink.waitForDisplayed();
         await this.hereLink.click();
 
@@ -72,7 +84,7 @@ class Internet {
     /**
      * Scrolls to page footer
      */
-    async scrollToPageFooter(){
+    async scrollToPageFooter() {
         await this.pageFooter.moveTo()
     }
     /**
@@ -91,10 +103,10 @@ class Internet {
         await this.target.keys(text)
 
     }
-/**
- * 
- * @returns The text of the return element 
- */
+    /**
+     * 
+     * @returns The text of the return element 
+     */
     async getResutsText() {
         await this.result.waitForDisplayed()
         return this.result.getText()
