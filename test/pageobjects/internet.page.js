@@ -1,3 +1,5 @@
+
+
 class Internet {
 
     get pageHeader() { return $('h1.heading') }
@@ -30,6 +32,16 @@ class Internet {
     get dropdownMenuOpton1() { return $('#dropdown option:nth-child(2)') }
     get dropdownMenuOpton2() { return $('#dropdown option:nth-child(3)') }
     javascriptAlertButton(index) { return $(`.example li:nth-child(${index}) button`) }
+    get enableButton(){ return $('.example #input-example button')}
+    get inputEnableField(){ return $('.example #input-example input')}
+
+/**
+ * Clicks the Enable/Disable button
+ */
+    async clickEnableButton(){
+        await this.enableButton.waitForDisplayed()
+        await this.enableButton.click()
+    }
 /**
  * Click the specified javascript alert button
  * @param {Number} index the index of the element
