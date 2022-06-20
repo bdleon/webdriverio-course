@@ -1,6 +1,3 @@
-
-
-
 class Internet {
 
     get pageHeader() { return $('h1.heading') }
@@ -37,6 +34,13 @@ class Internet {
     get inputEnableField() { return $('.example #input-example input') }
     get exampleButton() { return $('.example button') }
     deleteButton(index) { return $(`#elements button:nth-child(${index})`) }
+
+    get pageButton(){ return $('#checkbox-example button')}
+
+    async clickPageButton(){
+        await this.pageButton.waitForDisplayed()
+        await this.pageButton.click()
+    }
 
     async clickExampleButton() {
         await this.exampleButton.waitForDisplayed()
