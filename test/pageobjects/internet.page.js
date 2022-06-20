@@ -1,3 +1,4 @@
+const { default: $ } = require("webdriverio/build/commands/browser/$")
 
 
 class Internet {
@@ -32,21 +33,33 @@ class Internet {
     get dropdownMenuOpton1() { return $('#dropdown option:nth-child(2)') }
     get dropdownMenuOpton2() { return $('#dropdown option:nth-child(3)') }
     javascriptAlertButton(index) { return $(`.example li:nth-child(${index}) button`) }
-    get enableButton(){ return $('.example #input-example button')}
-    get inputEnableField(){ return $('.example #input-example input')}
+    get enableButton() { return $('.example #input-example button') }
+    get inputEnableField() { return $('.example #input-example input') }
+    get exampleButton() { return $('.example button') }
+    deleteButton(index) { return $(`#elements button:nth-child(${index})`) }
 
-/**
- * Clicks the Enable/Disable button
- */
-    async clickEnableButton(){
+    async clickExampleButton() {
+        await this.exampleButton.waitForDisplayed()
+        await this.exampleButton.click()
+    }
+
+    async clickDeleteButton(index){
+        await this.deleteButton(index).waitForDisplayed()
+        await this.deleteButton(index).click()
+    }
+
+    /**
+     * Clicks the Enable/Disable button
+     */
+    async clickEnableButton() {
         await this.enableButton.waitForDisplayed()
         await this.enableButton.click()
     }
-/**
- * Click the specified javascript alert button
- * @param {Number} index the index of the element
- */
-    async clickJavascriptAlertButton(index){
+    /**
+     * Click the specified javascript alert button
+     * @param {Number} index the index of the element
+     */
+    async clickJavascriptAlertButton(index) {
         await this.javascriptAlertButton(index).waitForDisplayed();
         await this.javascriptAlertButton(index).click();
     }
