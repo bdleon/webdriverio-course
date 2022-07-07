@@ -1,5 +1,6 @@
 
 
+
  googlePage = require("../pageobjects/google.page");
 
 
@@ -20,5 +21,15 @@ describe('Google Search', function (){
         await browser.pause()
         await googlePage.searchResultsNavigation.waitForDisplayed();
         assert.equal('News', await googlePage.searchResultsNavigationItem(3).getText(),'index did not equal News')
+    })
+
+    it('Verify that clicking the Google logo on the results page loads the Google search homepage.', async ()=>{
+        await browser.pause(2000);
+        console.log(await browser.getTitle())
+        await googlePage.clickGoogleLogo();
+        console.log(await browser.getTitle())
+        await browser.switchWindow('https://www.google.com/');
+        assert.equal('Google', await browser.getTitle(),'Logo link did not return to the homepage')
+        
     })
 })
