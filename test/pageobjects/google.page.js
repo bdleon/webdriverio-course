@@ -9,7 +9,10 @@ get childSearchResult(){ return this.parentSearchResult.$$('#search .g.Ww4FFb')}
 get searchResultsNavigation(){ return $('#hdtb')}
 searchResultsNavigationItem(index){ return $(`#hdtb .hdtb-mitem:nth-child(${index})`)}
 get googleLogo(){ return $("img[alt='Google']")}
-
+/**
+ * Enters a string  of text in the input field
+ * @param {String} text for search term
+ */
 async enterSearchTerm (text){
     await this.searchInput.waitForDisplayed();
     await this.searchInput.click();
