@@ -1,3 +1,5 @@
+
+
 class Google{
 
 get searchInput(){ return $('input.gLFyf.gsfi')}
@@ -6,6 +8,7 @@ get parentSearchResult(){ return $('#search')}
 get childSearchResult(){ return this.parentSearchResult.$$('#search .g.Ww4FFb')}
 get searchResultsNavigation(){ return $('#hdtb')}
 searchResultsNavigationItem(index){ return $(`#hdtb .hdtb-mitem:nth-child(${index})`)}
+get googleLogo(){ return $("img[alt='Google']")}
 
 async enterSearchTerm (text){
     await this.searchInput.waitForDisplayed();
@@ -16,6 +19,11 @@ async enterSearchTerm (text){
 async clickGoogleSearchButton(){
     await this.googleSearchButton.waitForDisplayed()
     await this.googleSearchButton.click()
+}
+
+async clickGoogleLogo(){
+    await this.googleLogo.waitForDisplayed()
+    await this.googleLogo.click()
 }
 }
 module.exports = new Google()
